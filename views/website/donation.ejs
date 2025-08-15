@@ -1,0 +1,113 @@
+<%- include('layout/app', { 
+    body: `
+
+    <!-- banner Section -->
+    <section id="banner" class=" banner donation section  banner-bg">
+
+      <!-- Section Title -->
+      <div class="container banner-title" data-aos="fade-up">
+
+        <div class="text-center banner-title">
+          Donation
+        </div>
+        <div class="page-title">
+          <nav class="breadcrumbs">
+            <div class="container">
+              <ol>
+                <li><a href="index.html">Home</a></li>
+                <li class="current">Donation</li>
+              </ol>
+            </div>
+        </div>
+      </div><!-- End Section Title -->
+    </section>
+
+    <!-- /banner -->
+
+    <!-- donation Section -->
+    <section id="event" class="features event section flower3-bg">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+       
+        <div class="text-center custom-section-title2 og-title">
+          Online Donation Form
+        </div>
+        <div class="container-fluid container-xxxl">
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <div class="card donation-card p-4">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4 class="mb-4 donation-heading">Bank Account Details</h4>
+        
+                    <!-- Account Number -->
+                    <div class="form-group mb-1 custom-input-group">
+                      <label for="accountNumber" class="custom-label">Account Number</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control custom-input" id="accountNumber" value="4616515176515714" readonly>
+                        <span class="input-group-text custom-input-icon">
+                          <i class="fa-solid fa-copy"></i>
+                        </span>
+                      </div>
+                    </div>
+        
+                    <!-- IFSC Code -->
+                    <div class="form-group mb-1 custom-input-group">
+                      <label for="ifscCode" class="custom-label">IFSC Code</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control custom-input" id="ifscCode" value="UNI44936165" readonly>
+                        <span class="input-group-text custom-input-icon">
+                          <i class="fa-solid fa-copy"></i>
+                        </span>
+                      </div>
+                    </div>
+        
+                    <!-- Branch Name -->
+                    <div class="form-group mb-1 custom-input-group">
+                      <label for="branchName" class="custom-label">Branch Name</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control custom-input" id="branchName" value="Bank Branch"readonly >
+                        <span class="input-group-text custom-input-icon">
+                          <i class="fa-solid fa-copy"></i>
+                        </span>
+                      </div>
+                    </div>
+        
+                    <!-- UPI ID -->
+                    <div class="form-group mb-1 custom-input-group">
+                      <label for="upiID" class="custom-label">UPI ID</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control custom-input" id="upiID" value="964645451518@UPI" readonly>
+                        <span class="input-group-text custom-input-icon">
+                          <i class="fa-solid fa-copy"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <!-- QR Code -->
+                  <div class="col-md-4 text-end d-flex flex-column align-items-end justify-content-end">
+                    <img src="./assets/img/temple/QR.png" alt="QR Code" class="img-fluid custom-qr-code" data-aos="flip-right">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+    </section><!-- /donation Section -->
+
+    <!-- strip -->
+    <div class="container-fluid strip d-flex justify-content-center align-items-center">
+      <img src="./assets/img/temple/striplogo.png" class="img-fluid me-4 stripimg" alt="">
+      <div>
+        <h1>Baba Bhusandeswar Temple</h1>
+        <p>Official Website of Baba Bhusandeswar Temple</p>
+      </div>
+
+    </div>
+    <!-- /strip -->
+    
+    ` 
+}) %>

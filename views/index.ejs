@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Pages</h1>
+  <ul>
+    <% cms.forEach(cms => { %>
+      <li><a href="/page/<%= cms.id %>"><%= cms.name %></a></li>
+      
+    <% }) %>
+  </ul>
+</body>
+</html>

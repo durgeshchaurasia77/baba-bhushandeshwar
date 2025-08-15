@@ -1,0 +1,139 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+
+<!-- Vendor JS Files -->
+<script src="../../website/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../website/assets/vendor/php-email-form/validate.js"></script>
+<script src="../../website/assets/vendor/aos/aos.js"></script>
+<script src="../../website/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../../website/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../website/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../website/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="../../website/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+<!-- Main JS File -->
+<script src="../../website/assets/js/main.js"></script>
+<script>
+  const heroCarousel = document.querySelector('#hero-carousel');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  // Start dragging
+  heroCarousel.addEventListener('mousedown', (e) => {
+    isDown = true;
+    heroCarousel.classList.add('dragging');
+    startX = e.pageX - heroCarousel.offsetLeft;
+    scrollLeft = heroCarousel.scrollLeft;
+  });
+  // Stop dragging
+  heroCarousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    heroCarousel.classList.remove('dragging');
+  });
+  heroCarousel.addEventListener('mouseup', () => {
+    isDown = false;
+    heroCarousel.classList.remove('dragging');
+  });
+  // Mouse move event for dragging
+  heroCarousel.addEventListener('mousemove', (e) => {
+    if (!isDown) return; // Stop the function from running
+    e.preventDefault();
+    const x = e.pageX - heroCarousel.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll-fast
+    heroCarousel.scrollLeft = scrollLeft - walk;
+  });
+  // Touch support for mobile devices
+  heroCarousel.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - heroCarousel.offsetLeft;
+    scrollLeft = heroCarousel.scrollLeft;
+  });
+  heroCarousel.addEventListener('touchend', () => {
+    isDown = false;
+  });
+  heroCarousel.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - heroCarousel.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll-fast
+    heroCarousel.scrollLeft = scrollLeft - walk;
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    $(".festcarousel").owlCarousel({
+      loop: true,
+      autoplay: true,
+      margin: 1,
+      nav: true,
+      dots: false,
+      navText: [
+        "<img class='custom-prev' src='./assets/img/temple/prev.png' alt='Previous'>",
+        "<img class='custom-next' src='./assets/img/temple/next.png' alt='Next'>"
+      ],
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get all <p> elements within the class "event-text"
+    var eventTextElements = document.querySelectorAll(".event-text p");
+    // Loop through each text element
+    eventTextElements.forEach(function(textElement) {
+      // Get the full text
+      var fullText = textElement.innerHTML;
+      // Split the text into words
+      var words = fullText.split(" ");
+      // Prepare trimmed text and add "Read More" link
+      var trimmedText = fullText; // Default to full text
+      if (words.length > 100) {
+        trimmedText = words.slice(0, 110).join(" ") + '...'; // Trim to 110 words if necessary
+      }
+      // Add the "Read More" link at the end
+      trimmedText +=
+        ' <a href="/shravan-month" style="color: #B80000; font-weight: 700; font-size: 12px ">Read More</a>'; // Change the href to your target page
+      // Replace the paragraph text with the trimmed version
+      textElement.innerHTML = trimmedText;
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+$(".temple-about-card").owlCarousel({
+  loop: true,
+      autoplay: true,
+      margin: 20,
+      nav: true,
+      dots: false,
+      navText: [
+        "<img class='custom-prev2' src='./assets/img/temple/prev.png' alt='Previous'>",
+        "<img class='custom-next2' src='./assets/img/temple/next.png' alt='Next'>"
+      ],
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 2
+    },
+    1000: {
+      items: 4
+    }
+  }
+});
+});
+
+</script>
