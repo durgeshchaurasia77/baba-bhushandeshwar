@@ -1,0 +1,99 @@
+<%- include('../layout/css'); %>
+<%- include('../layout/header'); %>
+<%- include('../layout/sidebar'); %>
+        <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="row align-items-center">
+                            <div class="col-sm-8">
+                                <h4 class="page-title">CMS Management List</h4>
+                            </div>
+                            <div class="col-sm-4 text-sm-end">
+                                <div class="head-icons">
+                                    <a href="cms" data-bs-toggle="tooltip" title="Refresh">
+                                        <i class="ti ti-refresh-dot"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Collapse" id="collapse-header">
+                                        <i class="ti ti-chevrons-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Page Header -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- CMS List -->
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Title</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% cmsList.forEach((cms, index) => { %>
+                                            <tr>
+                                                <td><%= ((cmsPagination.currentPage - 1) * 10) + (index + 1) %></td>
+                                                <td><%= cms.name || '' %></td>
+                                                <td>
+                                                    <div class="form-button-action">
+                                                        <a class="btn btn-primary btn-sm mr-1"
+                                                           href="cms/edit/<%= cms.id %>"
+                                                           title="Edit">
+                                                           <i class="fa fa-edit"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+
+                                <!-- Pagination -->
+                                <div class="row align-items-center mt-2 mb-2">
+                                    <div class="col-md-6">
+                                        <div class="datatable-length">
+                                            Showing <%= cmsPagination.firstItem %> 
+                                            to <%= cmsPagination.lastItem %> 
+                                            of <%= cmsPagination.total %> entries
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="pagination justify-content-end">
+                                            <% if (cmsPagination.currentPage > 1) { %>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=<%= cmsPagination.currentPage - 1 %>">Previous</a>
+                                                </li>
+                                            <% } %>
+
+                                            <% for (let i = 1; i <= cmsPagination.totalPages; i++) { %>
+                                                <li class="page-item <%= (i === cmsPagination.currentPage) ? 'active' : '' %>">
+                                                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                                                </li>
+                                            <% } %>
+
+                                            <% if (cmsPagination.currentPage < cmsPagination.totalPages) { %>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=<%= cmsPagination.currentPage + 1 %>">Next</a>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../layout/modal_popup'); %>
+<%- include('../layout/footer'); %>
+<%- include('../layout/js'); %>

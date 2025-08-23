@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 // require('dotenv').config();
 const session = require('express-session');
+const flash = require('connect-flash');
 const webRoutes = require('./routes/webRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 // const { app, BrowserWindow } = require('electron');
@@ -20,10 +21,15 @@ app.use(
     resave: false,
     saveUninitialized: false,
     rolling: true,
-    cookie: { maxAge: 3600000 }, // 1 hour cookie expiry
+    cookie: { maxAge: 7200000 }, // 1 hour cookie expiry
   })
 );
-
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 

@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   cms.init({
     name: DataTypes.STRING,
-    short_name: DataTypes.TEXT
+    short_name: DataTypes.TEXT,
+    details:DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'cms',

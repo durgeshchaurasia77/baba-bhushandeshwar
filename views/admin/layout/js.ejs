@@ -249,3 +249,16 @@
         });
     });
 </script>
+<% if (success_msg.length > 0) { %>
+  <script>
+    toastr.success("<%= success_msg %>");
+  </script>
+<% } %>
+
+<% if (error_msg.length > 0) { %>
+  <script>
+    toastr.error("<%= error_msg %>");
+  </script>
+<% } %>
+</body>
+</html>
