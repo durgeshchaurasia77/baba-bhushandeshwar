@@ -1,26 +1,27 @@
-<!-- @php
+@php
     $user = Auth::guard('admin')->user();
-@endphp -->
-</head>
-<body>
-
-	<!-- Main Wrapper -->
-	<div class="main-wrapper">
+@endphp
 <!-- Header -->
 <div class="header">
 
 	<!-- Logo -->
 	<div class="header-left active">
-		<a href="/admin/dashboard" class="logo logo-normal">
-            <h3>BABA BHUSANDESHWAR</h3>
+		<a href="{{route('home')}}" class="logo logo-normal">
+			{{-- <img src="{{ asset('Black-Logo.svg') }}"alt="Logo"> --}}
+            {{-- <img src="{{ asset('baba-favicon.png') }}"alt="Logo"> --}}
+			{{-- <img src="{{ asset('White-Logo.svg') }}" class="white-logo" alt="Logo"> --}}
+            {{-- <img src="{{ asset('baba-favicon.png') }}" class="white-logo" alt="Logo"> --}}
+            <h3>EMI LOCKER</h3>
 		</a>
-		<a href="/admin/dashboard" class="logo-small">
-			<img src="../../../website/assets/img/favicon.png" alt="Logo">
+		<a href="" class="logo-small">
+			<img src="{{ asset('assets/img/logo-small.svg') }}" alt="Logo">
 		</a>
 		<a id="toggle_btn" href="javascript:void(0);">
 			<i class="ti ti-arrow-bar-to-left"></i>
 		</a>
 	</div>
+	<!-- /Logo -->
+
 	<a id="mobile_btn" class="mobile_btn" href="#sidebar">
 		<span class="bar-icon">
 			<span></span>
@@ -46,7 +47,7 @@
 			<!-- /Email -->
 
 			<!-- Notifications -->
-			<!-- {{-- <li class="nav-item dropdown nav-item-box">
+			{{-- <li class="nav-item dropdown nav-item-box">
 				<a href="javascript:void(0);" class="nav-link" data-bs-toggle="dropdown">
 					<i class="ti ti-bell"></i>
 					<span class="badge rounded-pill">13</span>
@@ -114,7 +115,7 @@
 						<a href="javascript:void(0);" class="clear-link">Clear all</a>
 					</div>
 				</div>
-			</li> --}} -->
+			</li> --}}
 			<!-- /Notifications -->
 
 			<!-- Profile Dropdown -->
@@ -122,20 +123,20 @@
 				<a href="javascript:void(0);" class="nav-link userset" data-bs-toggle="dropdown">
 					<span class="user-info">
 						<span class="user-letter">
-							<img src="" alt="Profile" loading="lazy" onerror="this.src='../../../admin-p/assets/img/profiles/avatar-20.jpg'">
+							<img src="{{asset($user->profile_image)}}" alt="Profile" loading="lazy" onerror="this.src='{{ asset('assets/img/profiles/avatar-20.jpg') }}'">
 						</span>
 						<span class="badge badge-success rounded-pill"></span>
 					</span>
 				</a>
 				<div class="dropdown-menu menu-drop-user">
 					<div class="profilename">
-						<a class="dropdown-item" href="/admin/dashboard">
+						<a class="dropdown-item" href="{{ route('home') }}">
 							<i class="ti ti-layout-2"></i> Dashboard
 						</a>
-						<a class="dropdown-item" href="/admin/profile">
+						<a class="dropdown-item" href="{{ route('admin_profile') }}">
 							<i class="ti ti-user-pin"></i> My Profile
 						</a>
-						<a class="dropdown-item" href="logout">
+						<a class="dropdown-item" href="{{ route('admin_logout') }}">
 							<i class="ti ti-lock"></i> Logout
 						</a>
 					</div>
@@ -150,13 +151,13 @@
 	<div class="dropdown mobile-user-menu">
 		<a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 		<div class="dropdown-menu">
-			<a class="dropdown-item" href="/admin/dashboard">
+			<a class="dropdown-item" href="{{ route('home') }}">
 				<i class="ti ti-layout-2"></i> Dashboard
 			</a>
-			<a class="dropdown-item" href="">
+			<a class="dropdown-item" href="profile.html">
 				<i class="ti ti-user-pin"></i> My Profile
 			</a>
-			<a class="dropdown-item" href="logout">
+			<a class="dropdown-item" href="{{ route('admin_logout') }}">
 				<i class="ti ti-lock"></i> Logout
 			</a>
 		</div>

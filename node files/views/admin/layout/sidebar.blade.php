@@ -1,0 +1,45 @@
+@php
+    $user = Auth::guard('admin')->user();
+@endphp
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="clinicdropdown">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset($user->profile_image) }}" class="img-fluid" alt="Profile"
+                            loading="lazy"onerror="this.src='{{ asset('assets/img/profiles/avatar-20.jpg') }}'">
+                        <div class="user-names">
+                            <h5>{{ $user->name ?? ''}}</h5>
+                            <h6>Admin</h6>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <ul>
+                        <li>
+                            <a class="{{ Route::is('cms') ? 'active' : '' }}" href="{{ route('cms') }}">
+                                    <i class="ti ti-brand-airtable"></i>
+                                <span>CMS Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a class="{{ Route::is('setting-edit') ? 'active' : '' }}" href="{{ route('setting-edit') }}">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <span>Setting</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /Sidebar -->

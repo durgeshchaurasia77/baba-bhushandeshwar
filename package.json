@@ -22,7 +22,8 @@
     "multer": "^2.0.2",
     "mysql2": "^3.14.3",
     "sequelize": "^6.37.7",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
     "electron": "^34.0.1"

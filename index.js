@@ -5,6 +5,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const webRoutes = require('./routes/webRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const checkSession = require('./middlewares/checkSession');
 // const { app, BrowserWindow } = require('electron');
 let mainWindow;
 dotenv.config();
@@ -36,6 +37,12 @@ app.set('view engine', 'ejs');
 // Routes
 app.use('/', webRoutes);
 app.use('/admin',adminRoutes);
+// app.use('/admin', (req, res, next) => {
+//   if (req.path === '/login' || req.path === '/admin_login_submit') {
+//     return next(); // login page aur submit ke liye checkSession skip
+//   }
+//   checkSession(req, res, next);
+// }, adminRoutes);
 
 // **Correct way** to listen on a valid port (e.g., `PORT` from environment or 4000 by default)
 const PORT = process.env.PORT || 4000; //  Define the port

@@ -11,12 +11,16 @@ const router = express.Router();
 
 router.get('/login', LoginController.login);
 router.post('/admin_login_submit',upload.none(), LoginController.loginSubmit);
-router.get('/dashboard',checkSession, LoginController.dashboard);
-router.get('/cms',checkSession, CMSController.index);
+router.get('/profile',upload.none(), LoginController.profile);
+router.post('/profile/update', upload.single("image"), LoginController.profileUpdate);
+router.get('/security',upload.none(), LoginController.changePassword);
+router.post('/update-password',upload.none(), LoginController.updatePassword);
+router.get('/dashboard', LoginController.dashboard);
+router.get('/cms', CMSController.index);
 router.get('/cms/edit/:id', CMSController.getPageById);
-router.post('/cms/update',checkSession, upload.none(), CMSController.update);
+router.post('/cms/update', upload.none(), CMSController.update);
 router.get('/setting/edit', SettingController.edit);
-router.post('/setting/update',checkSession, upload.none(), SettingController.update);
+router.post('/setting/update', upload.none(), SettingController.update);
 router.get('/logout', LoginController.logout);
 
 module.exports = router;
