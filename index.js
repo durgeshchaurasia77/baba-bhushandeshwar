@@ -5,6 +5,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const webRoutes = require('./routes/webRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const userApiRoutes = require('./routes/userApiRoutes');
 const checkSession = require('./middlewares/checkSession');
 // const { app, BrowserWindow } = require('electron');
 let mainWindow;
@@ -31,20 +32,14 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg');
   next();
 });
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 // Routes
 app.use('/', webRoutes);
 app.use('/admin',adminRoutes);
-// app.use('/admin', (req, res, next) => {
-//   if (req.path === '/login' || req.path === '/admin_login_submit') {
-//     return next(); // login page aur submit ke liye checkSession skip
-//   }
-//   checkSession(req, res, next);
-// }, adminRoutes);
-
-// **Correct way** to listen on a valid port (e.g., `PORT` from environment or 4000 by default)
+app.use('/api',userApiRoutes);
 const PORT = process.env.PORT || 4000; //  Define the port
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
