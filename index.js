@@ -7,6 +7,7 @@ const webRoutes = require('./routes/webRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const userApiRoutes = require('./routes/userApiRoutes');
 const checkSession = require('./middlewares/checkSession');
+const permissionMiddleware = require('./helper/permissionHelper');
 // const { app, BrowserWindow } = require('electron');
 let mainWindow;
 dotenv.config();
@@ -26,6 +27,7 @@ app.use(
     cookie: { maxAge: 7200000 }, // 1 hour cookie expiry
   })
 );
+app.use(permissionMiddleware);
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');

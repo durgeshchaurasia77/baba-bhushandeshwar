@@ -15,11 +15,19 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config, {
     dialect: 'mysql',
-
     logging: true
   });
 }
 
+db.cms      = require('../models/cms.js')(sequelize, Sequelize);
+db.Admin    = require('../models/Admin.js')(sequelize, Sequelize);
+db.Setting  = require('../models/Setting.js')(sequelize, Sequelize);
+db.User     = require('../models/User.js')(sequelize, Sequelize);
+db.Module   = require('../models/Module.js')(sequelize, Sequelize);
+db.Roles    = require('../models/Roles.js')(sequelize, Sequelize);
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -27,11 +35,4 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-db.cms      = require('../models/cms.js')(sequelize, Sequelize);
-db.Admin    = require('../models/Admin.js')(sequelize, Sequelize);
-db.Setting  = require('../models/Setting.js')(sequelize, Sequelize);
-db.User     = require('../models/User.js')(sequelize, Sequelize);
 module.exports = db;
-

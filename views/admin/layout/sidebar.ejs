@@ -16,21 +16,26 @@
       </ul>
 
       <ul>
+        <% if (can('category.view')) { %>
         <li>
           <a href="/admin/cms">
             <i class="ti ti-brand-airtable" style="margin-right:8px;"></i>
             <span>CMS Management</span>
           </a>
         </li>
+        <% } %>
 
+        <% if (can('settings.edit')) { %>
         <li>
           <a href="/admin/setting/edit">
             <i class="fa fa-cog" aria-hidden="true" style="margin-right:8px;"></i>
             <span>Setting</span>
           </a>
         </li>
-
+      <% } %>
         <!-- ✅ Master Management Dropdown -->
+         
+        <% if (can('master.management')) { %>
         <li class="submenu">
           <a href="javascript:void(0);">
             <i class="fa fa-database" style="margin-right:8px;"></i>
@@ -43,6 +48,7 @@
             <!-- <li><a href="/admin/master/users">Users</a></li> -->
           </ul>
         </li>
+        <% } %>
       </ul>
     </div>
   </div>

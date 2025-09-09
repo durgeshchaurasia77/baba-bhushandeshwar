@@ -1,5 +1,6 @@
 let db = require("../../models")
 // const CMS = require('../models');
+const rolePermissions = require('../../helper/permissions');
 const CMS = db.cms;
 const Admin = db.Admin;
 // console.log(CMS);
@@ -67,15 +68,20 @@ exports.loginSubmit = async (req, res) => {
             });
         }
 
+        const permissions = await rolePermissions(user.role_id);
+
         // Save user to session
         req.session.loggedin = true;
         req.session.user = user.dataValues;
+        req.session.userId = user.id;
+        req.session.role = user.role_id;
+        req.session.permissions = permissions;
 
         return res.json({
-            responseCode: 200,
-            responseMessage: 'You have successfully logged in.',
-            responseUrl: '/admin/dashboard'
-        });
+                responseCode: 200,
+                responseMessage: 'You have successfully logged in.',
+                responseUrl: '/admin/dashboard'
+            });
 
     } catch (err) {
         console.error(err);
